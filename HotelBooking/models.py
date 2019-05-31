@@ -1,3 +1,17 @@
 from django.db import models
 
 # Create your models here.
+
+class login(models.Model):
+    username = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+
+class user(models.Model):
+    login = models.ForeignKey(login,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    gender = models.CharField(max_length=50)
+    dob = models.DateField()
+    email = models.EmailField(max_length=200)
+    phone = models.PositiveIntegerField()
+    place = models.CharField(max_length=200)
