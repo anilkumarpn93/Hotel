@@ -1,7 +1,9 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import Http404
-from django.views import View,generic
+from django.views import generic
 from HotelBooking.models import login
+
+
 # Create your views here.
 def home(request):
 	return render(request,'public/home.html')
@@ -10,18 +12,16 @@ def home(request):
 # 	return render(request,'public/login.html',context)
 
 
-class LoginView(generic.ListView):
-
-	context_object_name = 'login'
-	def get_queryset(self):
-		return login.objects.all()
+class HomeView(generic.TemplateView):
+	template_name = 'public/home.html'
 
 
+class LoginView(generic.View):
+	template_name = 'public/login.html'
 
-def register_user(request):
-	return render(request,'public/login.html')
-
-def register_hotel(request):
-	return render(request,'public/login.html')
+	def get(self,request):
+		return render(request,self.template_name,{})
+	def post(self,request):
+		return render(request,self.template_name,{})
 
 
