@@ -28,3 +28,12 @@ class hotel(models.Model):
 
 
 
+class hotels(models.Model):
+    login = models.ForeignKey(login,on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    place = models.CharField(max_length=200)
+    phone = models.PositiveIntegerField()
+    email = models.EmailField(max_length=200)
+    status = models.CharField(max_length=200,default='pending')
+
+
